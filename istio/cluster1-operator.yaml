@@ -1,0 +1,110 @@
+---
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata: 
+  name: istiocontrolplane
+  namespace: istio-system
+spec:
+  components: 
+    egressGateways: 
+    - enabled: true
+      k8s:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - istio-egressgateway
+              topologyKey: "kubernetes.io/hostname"
+        hpaSpec:
+          minReplicas: 2
+          maxReplicas: 3
+      name: istio-egressgateway
+    ingressGateways: 
+    - enabled: true
+      k8s:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - istio-ingressgateway
+              topologyKey: "kubernetes.io/hostname"
+        hpaSpec:
+          minReplicas: 2
+          maxReplicas: 3
+        service: 
+          type: LoadBalancer
+      name: istio-ingressgateway
+    - enabled: true
+      k8s:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - istio-eastwestgateway
+              topologyKey: "kubernetes.io/hostname"
+        env: 
+        - name: ISTIO_META_ROUTER_MODE
+          value: sni-dnat
+        - name: ISTIO_META_REQUESTED_NETWORK_VIEW
+          value: network1
+        hpaSpec:
+          minReplicas: 2
+          maxReplicas: 3
+        service: 
+          ports:
+          - name: status-port
+            port: 15021
+            targetPort: 15021
+          - name: tls
+            port: 15443
+            targetPort: 15443
+          - name: tls-istiod
+            port: 15012
+            targetPort: 15012
+          - name: tls-webhook
+            port: 15017
+            targetPort: 15017
+          type: LoadBalancer
+      label: 
+        app: istio-eastwestgateway
+        istio: eastwestgateway
+        topology.istio.io/network: network1
+      name: istio-eastwestgateway
+    pilot:
+      enabled: true
+      k8s:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - istiod
+              topologyKey: "kubernetes.io/hostname"
+        hpaSpec:
+          minReplicas: 2
+          maxReplicas: 3
+  profile: default
+  values: 
+    gateways:
+      istio-ingressgateway:
+        injectionTemplate: gateway
+    global:
+      meshID: mesh1
+      multiCluster: 
+        clusterName: cluster1
+      network: network1
