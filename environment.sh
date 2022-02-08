@@ -28,12 +28,14 @@ export K8S_CL2_LABELS=Owner=BartVanBos,Team=PreSales,Purpose=MultiCluster,Email=
 
 ### ISTIO SECTION ###
 export ISTIO_VERSION=1.11.3
+export ISTIO_FLAVOR=tetrate
+# export ISTIO_FLAVOR=tetratefips
 
 ### OUTPUT SECTION ###
-export KOPS_CONFIG_CL1=${BASE_DIR}/output/${K8S_CL1_NAME}.yaml
+export KOPS_CONFIG_CL1=${BASE_DIR}/output/kops-${K8S_CL1_NAME}.yaml
 export K8S_KUBECONF_CL1=${BASE_DIR}/output/kubeconfig-${K8S_CL1_NAME}.yaml
 export CROSS_SECRET_CL1=${BASE_DIR}/output/cross-secret-${K8S_CL1_NAME}.yaml
 
-export KOPS_CONFIG_CL2=${BASE_DIR}/output/${K8S_CL2_NAME}.yaml
+export KOPS_CONFIG_CL2=${BASE_DIR}/output/kops-${K8S_CL2_NAME}.yaml
 export K8S_KUBECONF_CL2=${BASE_DIR}/output/kubeconfig-${K8S_CL2_NAME}.yaml
 export CROSS_SECRET_CL2=${BASE_DIR}/output/cross-secret-${K8S_CL2_NAME}.yaml

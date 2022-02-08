@@ -45,3 +45,8 @@ istio-install: istio-certs ## Install Tetrate Istio Distro
 
 istio-info: ## Get Tetrate Istio Distro information
 	./scripts/istio.sh info-istio
+
+
+
+clean:
+	rm -f output/*.yaml
