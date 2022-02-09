@@ -56,7 +56,7 @@ spec:
               topologyKey: "kubernetes.io/hostname"
         env: 
         - name: ISTIO_META_ROUTER_MODE
-          value: sni-dnat
+          value: "sni-dnat"
         - name: ISTIO_META_REQUESTED_NETWORK_VIEW
           value: network1
         hpaSpec:
@@ -98,6 +98,8 @@ spec:
         hpaSpec:
           minReplicas: 2
           maxReplicas: 3
+  meshConfig:
+    accessLogFile: /dev/stdout
   profile: default
   values: 
     gateways:

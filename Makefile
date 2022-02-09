@@ -16,10 +16,8 @@ glcoud-init: ## Login into GCP environment and prepare it for kops
 	./scripts/gcloud.sh login
 	./scripts/gcloud.sh create-kops-bucket
 
-kops-prepare-clusters: ## Prepare kops cluster configurationss
-	./scripts/kops.sh prepare-clusters
-
 kops-create-clusters: ## Create kops clusters from yaml configs
+	./scripts/kops.sh prepare-clusters
 	./scripts/kops.sh create-clusters
 	./scripts/kops.sh kubeconfig-clusters
 
@@ -81,4 +79,4 @@ clean: ## Clean temporary artifacts
 	rm -f output/*.yaml
 	rm -rf workloads/generated/*
 
-reset: clean kops-delete-clusters glcoud-init kops-prepare-clusters kops-create-clusters istio-install ## Pave and nuke
+reset: kops-delete-clusters clean glcoud-init kops-create-clusters istio-install ## Pave and nuke
