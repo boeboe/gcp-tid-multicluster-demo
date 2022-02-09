@@ -28,7 +28,8 @@ export K8S_CL2_LABELS=Owner=BartVanBos,Team=PreSales,Purpose=MultiCluster,Email=
 
 ### ISTIO SECTION ###
 export ISTIO_VERSION=1.11.3
-export ISTIO_FLAVOR=tetrate
+export ISTIO_FLAVOR=istio
+# export ISTIO_FLAVOR=tetrate
 # export ISTIO_FLAVOR=tetratefips
 
 ### OUTPUT SECTION ###

@@ -46,6 +46,11 @@ def main():
   handler = partial(CustomHandler, HOST, IP, MSG, REGION, ZONE)
   srv = HTTPServer(('',HTTP_PORT), handler)
   print('Server started on port %s' %HTTP_PORT)
+  print('  Host %s' %HOST)
+  print('  Ip %s' %IP)
+  print('  Msg %s' %MSG)
+  print('  Region %s' %REGION)
+  print('  Zone %s' %ZONE)
   srv.serve_forever()
 
 if __name__ == '__main__':
