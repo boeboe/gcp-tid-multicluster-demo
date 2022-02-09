@@ -3,6 +3,7 @@ FROM alpine as alpine
 LABEL name="json-server"
 LABEL description="Small json server"
 
+ENV PYTHONUNBUFFERED=1
 
 RUN apk add --update --quiet --no-cache \
       bash bash-completion vim nano jq \

@@ -32,6 +32,18 @@ spec:
         ports:
         - name: json-server
           containerPort: 9999
+        livenessProbe:
+          httpGet:
+            path: "/healthz"
+            port: 9999
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: "/healthz"
+            port: 9999
+          initialDelaySeconds: 30
+          periodSeconds: 10
       nodeSelector:
         topology.kubernetes.io/region: "REPLACE_REGION"
         topology.kubernetes.io/zone: "REPLACE_ZONE"

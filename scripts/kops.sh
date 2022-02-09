@@ -8,6 +8,7 @@ source ${BASE_DIR}/environment.sh
 
 if [[ $1 = "prepare-clusters" ]]; then
   kops create cluster \
+    --cloud gce \
     --cloud-labels "${K8S_CL1_LABELS}" \
     --kubernetes-version ${K8S_VERSION} \
     --master-count 1 \
@@ -18,6 +19,7 @@ if [[ $1 = "prepare-clusters" ]]; then
     --zones "${K8S_CL1_ZONES}"
 
   kops create cluster \
+    --cloud gce \
     --cloud-labels "${K8S_CL2_LABELS}" \
     --kubernetes-version ${K8S_VERSION} \
     --master-count 1 \

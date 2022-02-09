@@ -77,5 +77,8 @@ workload-commands: ## Print the workload commands
 #### Helpers ####
 #################
 
-clean:
+clean: ## Clean temporary artifacts
 	rm -f output/*.yaml
+	rm -rf workloads/generated/*
+
+reset: clean kops-delete-clusters glcoud-init kops-prepare-clusters kops-create-clusters istio-install ## Pave and nuke
