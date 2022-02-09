@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: json-server-REPLACE_INDEX
+  namespace: dstns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: json-server
+  template:
+    metadata:
+      labels:
+        app: json-server
+    spec:
+      terminationGracePeriodSeconds: 0
+      serviceAccountName: json-server
+      containers:
+      - name: json-server
+        image: boeboe/json-server
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: HTTP_PORT
+          value: "9999"
+        - name: REGION
+          value: "REPLACE_REGION"
+        - name: ZONE
+          value: "REPLACE_ZONE"
+        - name: MSG
+          value: "TID MultiCluster Demo"
+        ports:
+        - name: json-server
+          containerPort: 9999
+      nodeSelector:
+        topology.kubernetes.io/region: "REPLACE_REGION"
+        topology.kubernetes.io/zone: "REPLACE_ZONE"

@@ -1,1 +1,2 @@
 output/*.yaml
+workloads/generated/*/*.yaml

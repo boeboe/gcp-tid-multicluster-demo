@@ -29,6 +29,9 @@ kops-update-clusters: ## Update kops clusters from yaml configs
 kops-delete-clusters: ## Delete kops clusters
 	./scripts/kops.sh delete-clusters
 
+kops-refresh-credentials: ## Refreshing kubernetes admin credentials
+	./scripts/kops.sh refesh-credentials
+
 kops-info-clusters: ## Get info of kops clusters
 	./scripts/kops.sh info-clusters
 
@@ -47,6 +50,32 @@ istio-info: ## Get Tetrate Istio Distro information
 	./scripts/istio.sh info-istio
 
 
+###################
+#### Workloads ####
+###################
+
+deploy-json-client: ## Install json-client workloads
+	./workloads/workloads.sh deploy-json-client
+
+deploy-json-server: ## Install json-server workloads
+	./workloads/workloads.sh deploy-json-server
+
+undeploy-json-client: ## Uninstall json-client workloads
+	./workloads/workloads.sh undeploy-json-client
+
+undeploy-json-server: ## Uninstall json-server workloads
+	./workloads/workloads.sh undeploy-json-server
+
+undeploy-all: ## Uninstall json-client, json-server and namespaces
+	./workloads/workloads.sh undeploy-all
+
+workload-commands: ## Print the workload commands
+	./workloads/workloads.sh workload-commands
+
+
+#################
+#### Helpers ####
+#################
 
 clean:
 	rm -f output/*.yaml

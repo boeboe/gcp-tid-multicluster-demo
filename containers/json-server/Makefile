@@ -28,6 +28,8 @@ stop: ## Stop and remove a running container
 
 publish: ## Tag and publish container
 	docker tag $(DOCKER_ACCOUNT)/$(APP_NAME) $(DOCKER_ACCOUNT)/$(APP_NAME):${APP_VERSION}
+	docker tag $(DOCKER_ACCOUNT)/$(APP_NAME) $(DOCKER_ACCOUNT)/$(APP_NAME):latest
 	docker push $(DOCKER_ACCOUNT)/$(APP_NAME):${APP_VERSION}
+	docker push $(DOCKER_ACCOUNT)/$(APP_NAME):latest
 
 release: build publish ## Make a full release

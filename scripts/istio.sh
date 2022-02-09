@@ -14,7 +14,7 @@ ISTIO_DIR=${BASE_DIR}/istio
 
 
 K8S_CL1_NAME_CLEAN=$(echo ${K8S_CL1_NAME} | sed 's/\./-/g')
-K8S_CL2_NAME_CLEAN=$(echo ${K8S_CL1_NAME} | sed 's/\./-/g')
+K8S_CL2_NAME_CLEAN=$(echo ${K8S_CL2_NAME} | sed 's/\./-/g')
 
 shopt -s expand_aliases
 alias k1="kubectl --context=${K8S_CL1_NAME}"

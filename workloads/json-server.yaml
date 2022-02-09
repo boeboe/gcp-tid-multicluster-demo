@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: json-server
+  namespace: dstns
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: json-server
+  namespace: dstns
+  labels:
+    app: json-server
+    service: json-server
+spec:
+  ports:
+  - name: http-json-server
+    port: 9999
+    targetPort: json-server
+  selector:
+    app: json-server

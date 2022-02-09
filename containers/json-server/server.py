@@ -28,7 +28,7 @@ class CustomHandler(BaseHTTPRequestHandler):
   "message": "%s",
   "region": "%s",
   "source_ip": "%s",
-  "timestamp" "%s",
+  "timestamp": "%s",
   "zone": "%s"
 }""" % (self.ip, list(filter(None, str(self.headers).splitlines())), self.host, self.msg,
         self.region, self.client_address[0], str(datetime.now()), self.zone)

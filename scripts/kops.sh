@@ -56,6 +56,17 @@ if [[ $1 = "kubeconfig-clusters" ]]; then
 fi
 
 
+if [[ $1 = "refesh-credentials" ]]; then
+  kops export kubeconfig ${K8S_CL1_NAME} --admin
+  kops export kubeconfig ${K8S_CL2_NAME} --admin
+  kops export kubeconfig ${K8S_CL1_NAME} --admin --kubeconfig ${K8S_KUBECONF_CL1}
+  kops export kubeconfig ${K8S_CL2_NAME} --admin --kubeconfig ${K8S_KUBECONF_CL2}
+
+  print_info "Credentials refreshed"
+  exit 0
+fi
+
+
 if [[ $1 = "info-clusters" ]]; then
   print_info "Kops cluster states"
   kops get clusters --state ${KOPS_STATE_STORE}
