@@ -14,8 +14,8 @@ To start the demo, use make to go through the process
 
   help                           This help
   glcoud-init                    [1] Login into GCP environment and prepare it for kops
-  kops-create-clusters           Create kops clusters from yaml configs
-  kops-update-clusters           [2] Update kops clusters from yaml configs
+  kops-create-clusters           [2] Create kops clusters from yaml configs
+  kops-update-clusters           Update kops clusters from yaml configs
   kops-delete-clusters           [6] Delete kops clusters
   kops-refresh-credentials       Refreshing kubernetes admin credentials
   kops-info-clusters             Get info of kops clusters
