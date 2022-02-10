@@ -41,3 +41,13 @@ spec:
       - name: json-client
         image: boeboe/json-client
         imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - touch
+            - /tmp/healthy
+        readinessProbe:
+          exec:
+            command:
+            - touch
+            - /tmp/healthy
