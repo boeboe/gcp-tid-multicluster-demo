@@ -6,7 +6,7 @@ Change `environment.sh` to meet your requirements and environment
 
 ## Run
 
-To start the demo, use make to go through the process
+To start the demo, use `make` to go through the process
 
 
 ```
