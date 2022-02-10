@@ -100,6 +100,9 @@ spec:
           maxReplicas: 3
   meshConfig:
     accessLogFile: /dev/stdout
+    defaultConfig:
+      proxyMetadata:
+        ISTIO_META_DNS_CAPTURE: "true"
   profile: default
   values: 
     gateways:
