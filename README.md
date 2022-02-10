@@ -13,17 +13,17 @@ To start the demo, use make to go through the process
   # make
 
   help                           This help
-  glcoud-init                    Login into GCP environment and prepare it for kops
+  glcoud-init                    [1] Login into GCP environment and prepare it for kops
   kops-create-clusters           Create kops clusters from yaml configs
-  kops-update-clusters           Update kops clusters from yaml configs
-  kops-delete-clusters           Delete kops clusters
+  kops-update-clusters           [2] Update kops clusters from yaml configs
+  kops-delete-clusters           [6] Delete kops clusters
   kops-refresh-credentials       Refreshing kubernetes admin credentials
   kops-info-clusters             Get info of kops clusters
   istio-certs                    Install istio certificates
-  istio-install                  Install Tetrate Istio Distro
+  istio-install                  [3] Install Tetrate Istio Distro (including istio-certs)
   istio-info                     Get Tetrate Istio Distro information
-  deploy-json-client             Install json-client workloads
-  deploy-json-server             Install json-server workloads
+  deploy-json-client             [4] Install json-client workloads
+  deploy-json-server             [5] Install json-server workloads
   undeploy-json-client           Uninstall json-client workloads
   undeploy-json-server           Uninstall json-server workloads
   undeploy-all                   Uninstall json-client, json-server and namespaces
