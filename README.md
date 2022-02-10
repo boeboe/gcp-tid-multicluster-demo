@@ -30,4 +30,9 @@ To start the demo, use `make` to go through the process
   workload-commands              Print the workload commands
   clean                          Clean temporary artifacts
   reset                          Pave and nuke
-```  
+```
+
+Temporary artifacts specific to your environment will be stored in
+
+ - `output/*.yaml` : kops state, kubeconfig and cross cluster secrets
+ - `workloads/generated/*/*.yaml` : json-server generated deployment files
