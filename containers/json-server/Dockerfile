@@ -7,7 +7,7 @@ ENV PYTHONUNBUFFERED=1
 
 RUN apt-get update -y && apt-get install -y \
   bash bash-completion vim nano jq \
-  httpie curl wget tcpdump ssldump \
+  httpie curl wget hey tcpdump ssldump \
   netcat-openbsd net-tools dnsutils \
   python3 \
   && rm -rf /var/lib/apt/lists/*
