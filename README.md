@@ -1,4 +1,4 @@
-# TIB (Tetrate Istio Distribution) demo on GCP with KOPS
+# TID multi-cluster demo on GCP with KOPS
 
 ## Setup
 
